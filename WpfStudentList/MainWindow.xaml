@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfStudentList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStudentList"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>       
+        <DataTemplate x:Key="teacherTemplate">
+            <StackPanel Orientation="Horizontal" Background="Pink">
+            <Label Content="Course:"></Label>
+            <TextBlock Text="{Binding Course}"  FontStyle="Oblique" FontWeight="Bold" FontSize="20"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>            
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Name:"></Label>
+        <Label Grid.Column="0" Grid.Row="1" Content="Grade:"></Label>
+        <Label Grid.Column="0" Grid.Row="3" Content="Teacher:"></Label>
+        <!--<Label ContentTemplate="{StaticResource teacherTemplate}"  Content="{Binding MyTeacher}" Grid.Column="1" Grid.Row="3" Width="250" Height="50" Background="Beige"></Label>-->
+        <Label  Content="{Binding MyTeacher}" Grid.Column="1" Grid.Row="3" Width="250" Height="50" Background="Beige"></Label>
+        <TextBox x:Name="tbName" Grid.Column="1" Grid.Row="0" DataContext="{Binding Path=NewStudent}" Text="{Binding Name}"></TextBox>
+        <TextBox x:Name="tbGrade" Grid.Column="1" Grid.Row="1" DataContext="{Binding Path=NewStudent}" Text="{Binding Grade}"></TextBox>        
+        
+    </Grid>
+</Window>
+
+    
+    
+    
+<!--.. ContentTemplate="{StaticResource teacherTemplate}"-->
